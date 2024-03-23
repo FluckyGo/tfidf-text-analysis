@@ -1,0 +1,22 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="ru">
+    <head>    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+          {% block title %} Подсчет слов в тексте {% endblock %}
+        </title>
+        {% bootstrap_css %}
+      </head>
+  <body>
+    {% include "includes/header.html" %}
+    <main>      
+      {% block content %} Контента пока нет! {% endblock content %}
+    </main>
+    {% include "includes/footer.html" %}
+  </body>
+</html>

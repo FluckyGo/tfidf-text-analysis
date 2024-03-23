@@ -1,0 +1,11 @@
+{% load static %}
+{% with request.resolver_match.view_name as view_name %}
+
+<header>
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">             
+        Главная      
+    </div>
+  </nav>
+</header>
+{% endwith %}
