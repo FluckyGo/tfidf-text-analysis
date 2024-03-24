@@ -1,6 +1,7 @@
 from django.views.generic import ListView
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+
 from .models import Document, Text
 from .utils import (remove_punctuation, count_words,
                     create_list_from_dict, calculate_idf)

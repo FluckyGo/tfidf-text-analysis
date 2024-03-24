@@ -1,4 +1,5 @@
 from math import log
+
 from .models import Text, Document
 
 

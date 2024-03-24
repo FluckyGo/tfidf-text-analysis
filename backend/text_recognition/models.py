@@ -10,6 +10,9 @@ class Document(models.Model):
         verbose_name = 'Документ'
         verbose_name_plural = 'Документы'
 
+    def __str__(self) -> str:
+        return self.document_name
+
 
 class Text(models.Model):
     word = models.CharField('Слово', max_length=150)
@@ -29,3 +32,6 @@ class Text(models.Model):
         verbose_name = 'Слова'
         verbose_name_plural = 'Слова'
         ordering = ('-inverse_document_frequency',)
+
+    def __str__(self) -> str:
+        return self.word
