@@ -29,15 +29,3 @@ class Text(models.Model):
         verbose_name = 'Слова'
         verbose_name_plural = 'Слова'
         ordering = ('-inverse_document_frequency',)
-
-
-class DocumentText(models.Model):
-    document = models.ForeignKey(Document, on_delete=models.CASCADE)
-    text = models.ForeignKey(Text, on_delete=models.CASCADE)
-    term_frequency = models.IntegerField('Частота слова или TF', default=0)
-    inverse_document_frequency = models.IntegerField(
-        'Oбратная частота документа или IDF', default=0)
-
-    class Meta:
-        verbose_name = 'Документ и текст'
-        verbose_name_plural = 'Документы и тексты'
