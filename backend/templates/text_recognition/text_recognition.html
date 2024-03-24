@@ -14,24 +14,41 @@
   
 </form> 
 <hr>
-
-    
-<table class="table table-bordered">
-  <tr>
-      <th>Word</th>
-      <th>Term Frequency</th>
-      <th>Inverse Document Frequency</th>
-  </tr>
-
-  {% for text in page_obj %}
-  <tr>
-    <td>{{text.word}}</td>
-    <td>{{text.term_frequency}}</td>
-    <td>{{text.inverse_document_frequency}}</td>
-  </tr>
-  {% endfor %} 
-
-</table>
+<div class="accordion" id="accordionExample">
+  {% for item in page_obj %}
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+        <h2>Документ: {{item.document_name}}, Cлов в документе: {{item.total_words}} </h2>
+      </button>
+    </h2>
+    <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>Term Frequency</th>
+              <th>Word_quantity</th>
+              <th>IDF</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for text in item.texts.all %}
+            <tr>
+              <td>{{text.word}}</td>
+              <td>{{text.term_frequency}}</td>
+              <td>{{text.word_quantity}}</td>
+              <td>{{text.inverse_document_frequency}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
 {% include "includes/paginator.html" %}
 {% endblock %}
