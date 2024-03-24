@@ -9,7 +9,7 @@ from .utils import (remove_punctuation, count_words,
 class Index(ListView):
     template_name = 'text_recognition/text_recognition.html'
     queryset = Document.objects.prefetch_related('texts').all()
-    paginate_by = 10
+    paginate_by = 5
 
     def post(self, request, *args, **kwargs):
         if request.FILES:
