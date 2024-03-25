@@ -7,8 +7,8 @@ class Document(models.Model):
     total_words = models.IntegerField('Количество слов в документе', default=0)
 
     class Meta:
-        verbose_name = 'Документ'
-        verbose_name_plural = 'Документы'
+        verbose_name: str = 'Документ'
+        verbose_name_plural: str = 'Документы'
 
     def __str__(self) -> str:
         return self.document_name
@@ -29,8 +29,8 @@ class Text(models.Model):
         max_digits=5, decimal_places=4)
 
     class Meta:
-        verbose_name = 'Слова'
-        verbose_name_plural = 'Слова'
+        verbose_name: str = 'Слова'
+        verbose_name_plural: str = 'Слова'
         ordering = ('-inverse_document_frequency',)
 
     def __str__(self) -> str:

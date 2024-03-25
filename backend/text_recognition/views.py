@@ -17,15 +17,15 @@ class Index(ListView):
             uploaded_file = request.FILES['f']
             with uploaded_file as file:
                 file_content = file.read().decode('utf-8')
-                words = remove_punctuation(file_content)
+                words: list[str] = remove_punctuation(file_content)
 
-                document_instance = Document.objects.create(
+                document_instance: Document = Document.objects.create(
                     document_name=uploaded_file)
-                words_count = count_words(words)
-                words_list = create_list_from_dict(
+                words_count: dict = count_words(words)
+                words_list: list = create_list_from_dict(
                     words_count, document_instance)
 
-                total_words = sum(words_count.values())
+                total_words: int = sum(words_count.values())
 
                 Text.objects.bulk_create(words_list)
 
